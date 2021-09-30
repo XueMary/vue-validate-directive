@@ -78,10 +78,6 @@ const ruleFn = (rule: Rule, value: any): Promise<void> => {
       if (rule.max && value.length > rule.max) {
         reject(rule.message || "");
       }
-    } else if (rule.test) {
-      if (rule.test(value) === false) {
-        reject(rule.message || "");
-      }
     } else if (rule.validator) {
       const callback: Callback = (error) => {
         if (Object.prototype.toString.call(error) === "[object Error]") {

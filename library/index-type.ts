@@ -6,11 +6,10 @@ export type Rule = {
   message?: string,
   max?:number,
   min?:number
-  test?: (value:any)=>boolean,
   validator?: Validator
 };
 
-export type Validator = (rule: Rule, value: any, callback: Callback) => any
+export type Validator = (rule: Rule, value: any, callback: Callback) => void
 
 export type BindingValue = {
   prop?: string;
