@@ -1,0 +1,13 @@
+.validate-error-tip input{
+  position: relative;
+  border: 1px solid #F56C6C !important;
+}
+.validate-error-tip-text {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  padding-top: 4px;
+  color: #FF4E4E;
+  font-size: 12px;
+  line-height: 1;
+}

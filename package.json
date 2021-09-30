@@ -1,12 +1,29 @@
 {
   "name": "vue-validate-directive",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "用作数据验证",
+  "main": "dist/vue-validate-directive",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XueMary/vue-validate-directive.git"
+  },
+  "keywords": [
+    "vue",
+    "validate",
+    "directive"
+  ],
+  "author": "xue",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/XueMary/vue-validate-directive/issues"
+  },
+  "homepage": "https://github.com/XueMary/vue-validate-directive#readme",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build:dome": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build": "webpack --config build/webpack.config.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -25,13 +42,18 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^1.0.3",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^9.0.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "flush-promises": "^1.0.2",
     "lint-staged": "^9.5.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "typescript": "~4.1.5",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^5.55.1",
+    "webpack-cli": "^4.8.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
