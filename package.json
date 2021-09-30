@@ -1,6 +1,6 @@
 {
   "name": "vue-validate-directive",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "用作数据验证",
   "main": "dist/vue-validate-directive",
   "repository": {
@@ -26,7 +26,7 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "build": "webpack --config build/webpack.config.js",
-    "libraryPush": "npm run publish && npm run release && git push && git push --tag",
+    "libraryPush": "npm publish && npm run release && git push && git push --tag",
     "patch": "npm version patch && npm run libraryPush",
     "minor": "npm version minor && npm run libraryPush",
     "major": "npm version major && npm run libraryPush"
