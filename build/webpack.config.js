@@ -12,6 +12,9 @@ module.exports = {
     },
     clean: true
   },
+  externals: {
+    "vue": "Vue"
+  },
   module: {
     rules: [
       {
