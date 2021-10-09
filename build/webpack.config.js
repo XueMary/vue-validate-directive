@@ -1,7 +1,6 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
-  target: ["web", "es5"],
   mode: "production",
   entry: "./library/index.ts",
   output: {

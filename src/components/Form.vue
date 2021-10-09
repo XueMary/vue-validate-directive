@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import {validateDirective,validateSubmit} from '../../library/index'
-import '../../library/validate.css'
+import {validateDirective,validateSubmit} from '../../dist/vue-validate-directive'
+import '../../dist/validate.css'
 export default {
   directives: {
     validate: validateDirective
