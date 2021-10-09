@@ -1,6 +1,6 @@
 {
   "name": "vue-validate-directive",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "用作数据验证",
   "main": "dist/vue-validate-directive",
   "repository": {
@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/XueMary/vue-validate-directive#readme",
   "scripts": {
-    "release": "standard-version",
+    "release": "standard-version && git push",
     "commit": "git-cz",
     "serve": "vue-cli-service serve",
     "build:dome": "vue-cli-service build",
