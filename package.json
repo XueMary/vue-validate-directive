@@ -1,6 +1,6 @@
 {
   "name": "vue-validate-directive",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "用作数据验证",
   "main": "dist/vue-validate-directive",
   "repository": {
