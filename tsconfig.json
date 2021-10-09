@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
@@ -22,8 +22,6 @@
       ]
     },
     "lib": [
-      "es5",
-      "es2015.promise",
       "esnext",
       "dom",
       "dom.iterable",

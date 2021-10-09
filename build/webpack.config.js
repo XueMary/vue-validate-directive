@@ -1,6 +1,7 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
+  target: ['web', 'es5'],
   mode: "production",
   entry: "./library/index.ts",
   output: {
@@ -19,7 +20,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        use: ["babel-loader", "ts-loader"],
         exclude: /node_modules/,
       },
     ],
