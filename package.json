@@ -26,7 +26,7 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "build": "webpack --config build/webpack.config.js",
-    "libraryPush": "yarn && npm run build && npm publish",
+    "libraryPush": "yarn && npm run build && npm run release && npm publish",
     "patch": "npm run libraryPush",
     "minor": "npm version minor && npm run libraryPush",
     "major": "npm version major && npm run libraryPush"
