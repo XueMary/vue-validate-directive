@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/XueMary/vue-validate-directive/compare/v0.0.15...v0.0.16) (2021-10-09)
+
+
+### Features
+
+* package ([c10d656](https://github.com/XueMary/vue-validate-directive/commit/c10d65639100002e10a1257efcb5100e65601034))
+
 ### [0.0.15](https://github.com/XueMary/vue-validate-directive/compare/v0.0.14...v0.0.15) (2021-10-09)
 
 ### [0.0.14](https://github.com/XueMary/vue-validate-directive/compare/v0.0.13...v0.0.14) (2021-10-09)
