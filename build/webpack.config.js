@@ -18,35 +18,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              [
-                "@babel/preset-env",
-                {
-                  useBuiltIns: "usage",
-                  corejs: {
-                    //core-js的版本
-                    version: 3,
-                  },
-                  //需要兼容的浏览器
-                  targets: {
-                    chrome: "23",
-                    firefox: "21",
-                    ie: "8",
-                    safari: "6",
-                    edge: "12",
-                  },
-                },
-              ],
-            ],
-          },
-        },
-      },
-      {
         test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/,
