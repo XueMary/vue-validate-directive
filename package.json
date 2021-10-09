@@ -27,7 +27,7 @@
     "lint": "vue-cli-service lint",
     "build": "webpack --config build/webpack.config.js",
     "libraryPush": "npm run release && git push --follow-tags origin master && npm publish",
-    "patch": "npm version patch && npm run libraryPush",
+    "patch": "npm run libraryPush",
     "minor": "npm version minor && npm run libraryPush",
     "major": "npm version major && npm run libraryPush"
   },
