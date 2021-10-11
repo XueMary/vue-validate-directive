@@ -1,8 +1,15 @@
 import { AllDom, DomItem, Rule, Callback } from "./index-type";
 import { DirectiveOptions, DirectiveFunction } from "vue";
-export const allDom: AllDom = {
+import { isEmpty, addErrorDom, removeErrorDom } from './utils'
+const allDom: AllDom = {
   default: [],
 };
+/**
+ * 查找元素的数据
+ * @param element 
+ * @param prop 储存的字段
+ * @returns index索引 data指令bind的内容
+ */
 const findElement = (
   element: Element,
   prop = "default"
@@ -21,49 +28,13 @@ const findElement = (
   return { index, data };
 };
 
-const getErrorDom = (el: Element):Element|null => {
-  const errorDoms = el.getElementsByClassName("validate-error-tip-text");
-  if (errorDoms.length) {
-    return errorDoms[0];
-  }
-  return null;
-};
 
-const addErrorDom = (el: Element, message: string) => {
-  el.classList.add("validate-error-tip");
-  const errDom = getErrorDom(el)
-  if (errDom === null) {
-    const errorDom = document.createElement("div");
-    errorDom.textContent = message;
-    errorDom.classList.add("validate-error-tip-text");
-    el.append(errorDom);
-  } else {
-    errDom.textContent = message
-  }
-};
-
-const removeErrorDom = (el: Element) => {
-  el.classList.remove("validate-error-tip");
-  const errorDoms = el.getElementsByClassName("validate-error-tip-text");
-  if (errorDoms.length) {
-    for (let i = 0; i < errorDoms.length; i++) {
-      const dom = errorDoms[i];
-      el.removeChild(dom);
-    }
-  }
-};
-
-const isEmpty = (value: any) => {
-  return (
-    (Array.isArray(value) && value.length === 0) ||
-    (typeof value === "number" && Number.isNaN(value)) ||
-    value === "" ||
-    value === null ||
-    value === undefined
-  );
-};
-
-// catch has error
+/**
+ * 规则验证
+ * @param rule 规则
+ * @param value 值
+ * @returns 
+ */
 const ruleFn = (rule: Rule, value: any): Promise<void> => {
   return new Promise((resolve, reject) => {
     // debugger
@@ -81,11 +52,11 @@ const ruleFn = (rule: Rule, value: any): Promise<void> => {
     } else if (rule.validator) {
       const callback: Callback = (error) => {
         if (Object.prototype.toString.call(error) === "[object Error]") {
-          reject((error as Error).message || "");
-        } else if (typeof error === "string") {
+          reject((error as Error).message);
+        } else if (typeof error === "string" && error.length) {
           reject(error || "");
         } else {
-          reject("");
+          reject('');
         }
       };
       rule.validator(rule, value, callback);
@@ -94,6 +65,12 @@ const ruleFn = (rule: Rule, value: any): Promise<void> => {
   });
 };
 
+/**
+ * 多规则验证
+ * @param rules 
+ * @param value 
+ * @returns 
+ */
 const rulesForEach = async (rules: Rule[], value: any) => {
   let errorMessage = "";
 
@@ -121,6 +98,13 @@ const validateItem = async (el: Element, rules: Rule[], value: any) => {
   }
   return valid;
 };
+
+/**
+ * 触发验证方式
+ * @param el 
+ * @param prop 
+ * @param triggerEvent blur change
+ */
 export const triggerFn = async (
   el: Element,
   prop: string,
@@ -152,6 +136,7 @@ const bindEvent = (
     el.addEventListener(trigger, fn, true);
   }
 };
+
 const unbindEvent = (
   el: Element,
   fn: (...all: any[]) => any,
@@ -219,7 +204,7 @@ export const validateDirective: DirectiveOptions = {
   unbind,
 };
 
-export const validateSubmit = async (prop = "default", el = ".el-main") => {
+export const validate = async (prop = "default", el = ".el-main") => {
   if (!(allDom[prop] && Array.isArray(allDom[prop]))) return true;
   let validRes = true;
   let firstErrDom: Element | null = null;
@@ -258,5 +243,5 @@ export const validateSubmit = async (prop = "default", el = ".el-main") => {
     // error
   }
 
-  return validRes;
+  return {valid: validRes};
 };

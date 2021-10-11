@@ -13,13 +13,13 @@
     >
       <input class="input" type="text" v-model="inputValue" />
     </span>
-    <button class="btn" @click="validate">validate</button>
+    <button class="btn" @click="validateFn">validate</button>
   </div>
 </template>
 
 <script>
-import {validateDirective,validateSubmit} from '../../dist/vue-validate-directive'
-import '../../dist/validate.css'
+import {validateDirective,validate} from '../../library/index'
+import '../../library/validate.css'
 export default {
   directives: {
     validate: validateDirective
@@ -30,8 +30,8 @@ export default {
     };
   },
   methods: {
-    validate() {
-      return validateSubmit()
+    validateFn() {
+      validate()
     },
     validatePass(rule, value, callback) {
       if(Number.isNaN(Number(value))) {

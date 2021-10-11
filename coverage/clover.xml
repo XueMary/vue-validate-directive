@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1632982357438" clover="3.2.0">
-  <project timestamp="1632982357438" name="All files">
+<coverage generated="1633932729403" clover="3.2.0">
+  <project timestamp="1633932729404" name="All files">
     <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3" elements="12" coveredelements="12" complexity="0" loc="7" ncloc="7" packages="1" files="1" classes="1"/>
     <file name="Form.vue" path="/Users/xue/Desktop/vue-validate-directive/src/components/Form.vue">
       <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
