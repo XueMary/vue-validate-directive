@@ -204,8 +204,8 @@ export const validateDirective: DirectiveOptions = {
   unbind,
 };
 
-export const validate = async (prop = "default", el = ".el-main") => {
-  if (!(allDom[prop] && Array.isArray(allDom[prop]))) return true;
+export const validate = async (prop = "default", el = ".el-main"):Promise<{valid:boolean}> => {
+  if (!(allDom[prop] && Array.isArray(allDom[prop]))) return {valid: true};
   let validRes = true;
   let firstErrDom: Element | null = null;
   const proArr: Promise<void>[] = [];
