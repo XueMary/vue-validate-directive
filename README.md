@@ -17,10 +17,10 @@ vue 自定义指令 数据验证
 ```
 // main.js
 
-import {validateDirective, validateSubmit} from 'vue-validate-directive'
+import {validateDirective, validate} from 'vue-validate-directive'
 import 'vue-validate-directive/dist/validate.css'
 Vue.directive('validate', validateDirective)
-Vue.prototype.$validate = validateSubmit
+Vue.prototype.$validate = validate
 ```
 
 2. 基础示例 
@@ -28,14 +28,20 @@ Vue.prototype.$validate = validateSubmit
 // index.vue
 
 <template>
-  <input v-model="a" v-validate="{value: a, rules: [
-    { required: true, message: '请输入活动名称'},
-    { min: 3, max: 5, message: '长度在 3 到 5 个字', trigger: 'change' },
-    { validator: validatePass, trigger: ['blur', 'change'] },
-  ] }">
+  <div>
+    <div style="position: relative;" v-validate="{value: a, rules: [
+        { required: true, message: '请输入活动名称'},
+        { min: 3, max: 5, message: '长度在 3 到 5 个字', trigger: 'change' },
+        { validator: validatePass, trigger: ['blur', 'change'] },
+      ] }">
+      <input v-model="a">
+    </div>
+    <button @click="handleValidate">验证</button>
+  </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -43,6 +49,15 @@ export default {
     }
   },
   methods: {
+    handleValidate() {
+      this.$validate().then({valid}=>{
+        if(valid){
+          console.log('成功')
+        } else {
+          console.log('失败')
+        }
+      })
+    },
     validatePass(rule, value, callback) {
       if(Number.isNaN(Number(value))) {
         callback('请输入数字类型');
@@ -54,4 +69,11 @@ export default {
 }
 </script>
 ```
+
+
+## 注意事项
+
+1. 验证后错误信息会存放在当前元素的子级中， input元素不能有子元素。 所以v-validate不能直接绑定在不能创建子元素的element上， 一些组件库的 el-input是可以直接绑定的， 因为他们已经自带包了一层了
+
+2. 验证错误信息是通过定位来确定位置的， 所以需要给v-validate的元素添加定位使错误信息在正确的位置
 
