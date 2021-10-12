@@ -28,3 +28,7 @@ export type DomItem = {
 };
 export type AllDom = Record<string, DomItem[]>;
 
+export type Validate = (params: {
+  prop?: "default", 
+  el?: ".el-main"
+}) => Promise<{valid:boolean}>

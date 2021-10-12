@@ -70,10 +70,48 @@ export default {
 </script>
 ```
 
+## 多表单示例
+```
+<div>
+  <div style="position: relative;" v-validate="{value: a, rules: [
+      { required: true, message: '请输入活动名称'},
+    ] }">
+    <input v-model="a">
+  </div>
+  <button @click="handleValidate('default')">验证</button>
+
+  <div style="position: relative;" v-validate="{value: a, prop: 'two' rules: [
+      { required: true, message: '请输入活动名称'},
+    ] }">
+    <input v-model="a">
+  </div>
+  <button @click="handleValidate('two')">验证</button>
+</div>
+
+
+handleValidate(prop) {
+  this.$validate({prop}).then({valid}=>{
+    if(valid){
+      console.log('成功')
+    } else {
+      console.log('失败')
+    }
+  })
+},
+```
 
 ## 注意事项
 
 1. 验证后错误信息会存放在当前元素的子级中， input元素不能有子元素。 所以v-validate不能直接绑定在不能创建子元素的element上， 一些组件库的 el-input是可以直接绑定的， 因为他们已经自带包了一层了
 
 2. 验证错误信息是通过定位来确定位置的， 所以需要给v-validate的元素添加定位使错误信息在正确的位置
+
+
+### validate 介绍
+
+
+1. 入参 {prop, el}
+    - prop: 默认值default，用于区分单个页面有多个表单
+    - el: 默认值el-main，错误滚动定位容器
+
 

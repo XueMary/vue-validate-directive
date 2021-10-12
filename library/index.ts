@@ -1,4 +1,4 @@
-import { AllDom, DomItem, Rule, Callback } from "./index-type";
+import { AllDom, DomItem, Rule, Callback, Validate } from "./index-type";
 import { DirectiveOptions, DirectiveFunction } from "vue";
 import { isEmpty, addErrorDom, removeErrorDom } from './utils'
 const allDom: AllDom = {
@@ -204,7 +204,12 @@ export const validateDirective: DirectiveOptions = {
   unbind,
 };
 
-export const validate = async (prop = "default", el = ".el-main"):Promise<{valid:boolean}> => {
+export const validate: Validate = async (params) => {
+  const defParams = Object.assign({}, {
+    prop: "default", 
+    el: ".el-main"
+  }, params)
+  const {prop, el} = defParams
   if (!(allDom[prop] && Array.isArray(allDom[prop]))) return {valid: true};
   let validRes = true;
   let firstErrDom: Element | null = null;
