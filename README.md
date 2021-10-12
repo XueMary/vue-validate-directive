@@ -113,5 +113,6 @@ handleValidate(prop) {
 1. 入参 {prop, el}
     - prop: 默认值default，用于区分单个页面有多个表单
     - el: 默认值el-main，错误滚动定位容器
+2. 出参 Promise<{valid:boolean}>
 
 
