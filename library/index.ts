@@ -183,18 +183,16 @@ const update: DirectiveFunction = async (el, binding) => {
 
   const oldBindValue = binding.oldValue;
   const oldValue = oldBindValue.value;
-
-  if (JSON.stringify(oldValue) !== JSON.stringify(value)) {
-    // 更新数据
-    const { data } = findElement(el, prop);
-    if (data) {
-      data.value = value;
-    }
-    try {
-      await triggerFn(el, prop, "change");
-    } catch (error) {
-      console.error(error);
-    }
+  
+  // 更新数据
+  const { data } = findElement(el, prop);
+  if (data) {
+    data.value = value;
+  }
+  try {
+    await triggerFn(el, prop, "change");
+  } catch (error) {
+    console.error(error);
   }
 };
 
